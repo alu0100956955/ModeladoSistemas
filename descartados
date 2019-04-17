@@ -1,0 +1,76 @@
+De pruebas
+
+			//System.out.println(d.getMin().toString());
+			//System.out.println(d.getMax().toString());
+			//d.limites();
+			
+			
+			System.out.println(d.getMin().toString());
+			System.out.println(d.getMax().toString());
+			
+
+
+de la clase dataset
+	private ArrayList<Instancia> datos = new ArrayList<Instancia>();
+	private ArrayList<Double> min = new ArrayList<Double>();	// NO TIENE SENTIDO , esto debe ser parte de atributo
+	private ArrayList<Double> max = new ArrayList<Double>();	// NO TIENE SENTIDO , esto debe ser parte de atributo
+
+/*
+	public Dataset(Scanner inputStream ) {
+		inputStream.useDelimiter(",");	
+		Boolean first = new Boolean(true);	// valor para controlar si se ha recogido la primera fila
+		while(inputStream.hasNext()) {
+			if (first) {
+				//primera = new String[] {inputStream.nextLine()};
+				String data = inputStream.nextLine();
+				primera = data.split(",");
+				first = false;
+			}	
+			String data = inputStream.nextLine();		// cambiados por construirLinea()
+			String[] values = data.split(",");
+			Instancia f1 = new Instancia(values);	// cambiados por add()
+			datos.add(f1);
+		}
+		crearMinyMax(primera.length -1);
+		limites(datos);
+	}*/
+
+public void add(String[] values) {		// con la linea ya pasada a String[] declaramos el objeto Instancia , lo añadimos a la matriz datos y llamamos a lineaAtributo()
+		Instancia f1 = new Instancia(values);
+		datos.add(f1);
+		lineaAtributo(values);
+	}
+
+public ArrayList<Double> getMin(){
+		return min;
+	}
+	public ArrayList<Double> getMax(){
+		return max;
+	}
+
+
+	// -------------- pasar a atributo ------------------//
+private void crearMinyMax(int j) {		// esto debe estar en el atributo
+		for(int i=0;i<j;i++) {
+			min.add(1000.0);
+			max.add(0.0);
+		}
+		
+	}
+	private void comprobarValor(Double d, int j) {		// en este metodo comprobare con el array de min y de max si se puede cambiar algun valor, EN EL ATRIBUTO
+		if (d < min.get(j)) min.set(j,d);
+		if (d > max.get(j)) max.set(j, d);
+	}
+	
+	private void limites (ArrayList<Instancia> dat) {	// en este metodo calcularemos los limites min y max, ESTO DEBE ESTAR EN EL ATRIBUTO
+		/*1º recorremos datos 
+		 * 2º llamamos a comprobarValor para cada dato de datos ( o le pasamos datos directamente)*/
+		for (int i =0; i < dat.size();i++) {
+			//System.out.println(i);
+			for (int j =0;j < dat.get(i).size();j++) {
+				//System.out.print(datos.get(i).get(j));
+				comprobarValor(dat.get(i).get(j),j);
+			}
+		}
+		
+	}

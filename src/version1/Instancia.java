@@ -6,6 +6,10 @@ public class Instancia {
 	private String clase;
 	private ArrayList<Double> datos;
 	
+	public Instancia() {
+		this.datos = new ArrayList<Double>();
+		clase = new String();
+	}
 	public Instancia(String[] fila) {
 		this.datos = new ArrayList<Double>();
 		for (int i=0; i< fila.length-1  ;i++) {
@@ -24,6 +28,20 @@ public class Instancia {
 	public Double get(int i) {
 		return datos.get(i);
 	}
-	
-	
+	public void add(Double e) {
+		datos.add(e);
+	}
+	public void setClase(String a) {
+		clase =a;
+	}
+	public String toString() {
+		String aux = new String();
+		for (Double a:datos) {
+			aux += a+" ";
+		}
+		return aux;
+	}
+	public void print() {
+		System.out.print("["+toString()+"]\n");
+	}
 }

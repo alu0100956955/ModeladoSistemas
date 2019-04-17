@@ -21,15 +21,11 @@ public class Pruebas {
 			Scanner inputStream = new Scanner(file);
 			Dataset d = new Dataset(inputStream);
 			
-			//System.out.println(d.getMin().toString());
-			//System.out.println(d.getMax().toString());
-			//d.limites();
-			System.out.println(d.getMin().toString());
-			System.out.println(d.getMax().toString());
-			
-			System.out.println("Ahora con atributo");
+			//System.out.println("Ahora con atributo");
 			System.out.println(d.Min().toString());
 			System.out.println(d.Max().toString());
+			
+			d.construirInstancia(2).print();
 		}catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

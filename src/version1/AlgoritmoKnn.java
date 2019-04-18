@@ -1,27 +1,27 @@
 package version1;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class AlgoritmoKnn {
-
+	private ArrayList<Vecino> vecinos = new ArrayList<Vecino>();
+	private int k;
 	
-	public AlgoritmoKnn(Scanner inputStream) {
-		// Construyo el Dataset, implemento los datos a evaluar , y miro los limites
+	public AlgoritmoKnn(Scanner inputStream, Scanner evaluar , int k) {// Construyo el Dataset, implemento los datos a evaluar e inicializo k
 		Dataset d = new Dataset(inputStream);
-		d.datosEntrenar();
-		//d.limites();
+		d.datosEvaluar(evaluar);		// aqui se añaden los datos a evaluar al dataset
+		k =0;
 	}
 	
-	public void normalizar() {	// este metodo deberia devolver la instancia normalizada
+	public Instancia normalizar(Instancia a) {	// este metodo deberia devolver la instancia normalizada
 		
+		return a;
 	}
 	public void distancia(Instancia a) { // al llamar este metodo se empleara el metodo normalizar 
 		
 	}
-	public void buscarVecino() {		// busca vecino , pero como ignora los ya recogidos?, con comprobarVecino , si devuelve false ese vecino aun no ha sido seleccionado 
-										// vale pero como busacamos el otro que sea mas cercano?, antes de mejorar el vecino comprobar asi si devuelve true significa que el que tenemos
-										// es el mas cercano , bueno no este depende de como recorramos el dataset, ya esta si devuelve true ignoramos esa instancia y seguimos buscando
-										// tendra un bucle que recorra el dataset (por instancias) realizando llamadas a instancia y comprobarVecino
+	
+	public void buscarVecino() {		
 		
 	}
 	
@@ -29,8 +29,10 @@ public class AlgoritmoKnn {
 		
 	}
 	
-	public void algoritmo() {		// aqui habra un bucle que hara tantas iteraciones como k tengamos , aqui se llamara a buscarVecino por cada iteracion
-		
+	public void algoritmo(int k) {		// aqui habra un bucle que hara tantas iteraciones como k tengamos , aqui se llamara a buscarVecino por cada iteracion
+		for(int i=0;i<k;i++) {			// no deberia esta este bucle en buscar vecino y que el algoritmo se encarge de hacer las otras comprobaciones?
+			buscarVecino();
+		}
 	}
 	
 }

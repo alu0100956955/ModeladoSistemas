@@ -17,6 +17,7 @@ de la clase dataset
 
 /*
 	public Dataset(Scanner inputStream ) {
+	//inputStream.useDelimiter(",");	// esto se deberia de realizar fuera , esto hace falta?¿
 		inputStream.useDelimiter(",");	
 		Boolean first = new Boolean(true);	// valor para controlar si se ha recogido la primera fila
 		while(inputStream.hasNext()) {
@@ -74,3 +75,18 @@ private void crearMinyMax(int j) {		// esto debe estar en el atributo
 		}
 		
 	}
+	
+	
+	
+	
+De algoritmo
+
+// busca vecino , pero como ignora los ya recogidos?, con comprobarVecino , si devuelve false ese vecino aun no ha sido seleccionado 
+										// vale pero como busacamos el otro que sea mas cercano?, antes de mejorar el vecino comprobar asi si devuelve true significa que el que tenemos
+										// es el mas cercano , bueno no este depende de como recorramos el dataset, ya esta si devuelve true ignoramos esa instancia y seguimos buscando
+										// tendra un bucle que recorra el dataset (por instancias) realizando llamadas a instancia y comprobarVecino
+										
+											
+	
+	
+	

@@ -22,6 +22,7 @@ public class Pruebas {
 			Dataset d = new Dataset(inputStream);
 			
 			//System.out.println("Ahora con atributo");
+			d.cabezera();
 			System.out.println(d.Min().toString());
 			System.out.println(d.Max().toString());
 			

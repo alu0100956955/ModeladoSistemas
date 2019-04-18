@@ -22,7 +22,7 @@ public class AtributoNumerico extends Atributo{
 	public Double get(int i) {
 		return columna.get(i);
 	}
-	public int numRows() {		// metodo para devolver el numero de columnas que tiene la matriz de datos
+	public int numRows() {		// metodo para devolver el numero de filas
 		return columna.size();
 	}
 	

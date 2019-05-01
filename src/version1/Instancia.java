@@ -31,6 +31,9 @@ public class Instancia {
 	public void add(Double e) {
 		datos.add(e);
 	}
+	public void set(int i , Double a){
+		datos.set(i,a);
+	}
 	public void setClase(String a) {
 		clase =a;
 	}
@@ -39,6 +42,16 @@ public class Instancia {
 		for (Double a:datos) {
 			aux += a+" ";
 		}
+		aux += clase;
+		return aux;
+	}
+	
+	public Double distancia() {
+		Double aux =0.0;
+		for(int i =0; i< size() ; i++) {
+			aux += get(i);
+		}
+		System.out.println(aux);
 		return aux;
 	}
 	public void print() {

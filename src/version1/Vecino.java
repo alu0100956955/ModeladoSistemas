@@ -6,7 +6,7 @@ public class Vecino {
 	
 	//  CONSTRUCTORES
 	public Vecino() {
-		this(10000.0,0);
+		this(100000.0,0);
 	}
 	public Vecino(Double a,int i) {
 		distancia =a;
@@ -29,7 +29,16 @@ public class Vecino {
 	public void setP(int a) {
 		posicion =a;
 	}
+	public void set(int i , Double a) {
+		distancia =a;
+		posicion = i;
+	}
 	
+	public String toString() {
+		String aux = new String();
+		aux += "[ " + getD() + " , " + getP() + " ]" ;
+		return aux;
+	}
 	
 	
 }

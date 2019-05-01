@@ -87,6 +87,21 @@ De algoritmo
 										// tendra un bucle que recorra el dataset (por instancias) realizando llamadas a instancia y comprobarVecino
 										
 											
+											/*
+		System.out.println("min: "+ d.min(0));
+		System.out.println("min: "+ d.min(1));
+		System.out.println("min: "+ d.min(2));
+		System.out.println("min: "+ d.min(3));
+		
+		System.out.println("max: "+ d.max(0));
+		System.out.println("max: "+ d.max(1));
+		System.out.println("max: "+ d.max(2));
+		System.out.println("max: "+ d.max(3));*/
+		
+		
+		
+		
+		//return valorAbsoluto(normalizar(b).distancia()-normalizar(a).distancia());
 	
 	
 	

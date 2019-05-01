@@ -11,14 +11,28 @@ public class Pruebas {
 	public static void main(String[] args) {
 		//prueba();
 		dataset();
+		//pruebaDistancia();
 		
 	}
 
+	public static void pruebaDistancia() {
+		String[] s1 = new String[]{"5.1","3.5","1.4","0.2"};
+		String[] s2 = new String[]{"4.9","3","1.4","0.2"};		
+		Instancia i1 = new Instancia(s1);
+		Instancia i2 = new Instancia(s2);
+		System.out.println(AlgoritmoKnn.distancia(i1, i2));
+	}
+	
+	
 	public static void dataset() {
+		String nombreFichero2 = "evaluar_flor_1.csv";
+		File file2 = new File(nombreFichero2);
 		String nombreFichero = "iris.csv";
 		File file = new File(nombreFichero);
+		
 		try {
 			Scanner inputStream = new Scanner(file);
+			/*
 			Dataset d = new Dataset(inputStream);
 			
 			//System.out.println("Ahora con atributo");
@@ -27,10 +41,20 @@ public class Pruebas {
 			System.out.println(d.Max().toString());
 			
 			d.construirInstancia(2).print();
+			*/
+			System.out.println("ahora el algoritmo");
+			Scanner inputStream2 = new Scanner(file2);
+			AlgoritmoKnn al = new AlgoritmoKnn(inputStream,inputStream2,1);
+			al.print();
+			al.buscarVecino();
+			al.verVecino();
+			inputStream.close();
+			inputStream2.close();
 		}catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
+
 	
 	public static void prueba() {
 		String nombreFichero = "iris.csv";

@@ -3,14 +3,16 @@ package version1;
 public class Vecino {
 	private Double distancia;
 	private int posicion;
+	public String clase;
 	
 	//  CONSTRUCTORES
 	public Vecino() {
-		this(100000.0,0);
+		this(100000.0,2500,"xx");
 	}
-	public Vecino(Double a,int i) {
+	public Vecino(Double a,int i,String s) {
 		distancia =a;
 		posicion=i;
+		clase = new String(s);
 	}
 	
 	
@@ -21,6 +23,9 @@ public class Vecino {
 	public int getP() {
 		return posicion;
 	}
+	public String getC() {
+		return clase;
+	}
 
 	// SETTERS
 	public void setD(Double a) {
@@ -29,14 +34,18 @@ public class Vecino {
 	public void setP(int a) {
 		posicion =a;
 	}
-	public void set(int i , Double a) {
+	public void setC(String s) {
+		clase = s;
+	}
+	public void set(int i , Double a,String s) {
 		distancia =a;
 		posicion = i;
+		clase = s ;
 	}
 	
 	public String toString() {
 		String aux = new String();
-		aux += "[ " + getD() + " , " + getP() + " ]" ;
+		aux += "[ " + getD() + " , " + getP() + " , " + getC() + " ]" ;
 		return aux;
 	}
 	

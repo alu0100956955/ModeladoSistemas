@@ -44,10 +44,10 @@ public class Pruebas {
 			*/
 			System.out.println("ahora el algoritmo");
 			Scanner inputStream2 = new Scanner(file2);
-			AlgoritmoKnn al = new AlgoritmoKnn(inputStream,inputStream2,1);
-			al.print();
+			AlgoritmoKnn al = new AlgoritmoKnn(inputStream,inputStream2,2);
+			//al.printDataset();
 			al.buscarVecino();
-			al.verVecino();
+			al.printVecinos();
 			inputStream.close();
 			inputStream2.close();
 		}catch (FileNotFoundException e) {

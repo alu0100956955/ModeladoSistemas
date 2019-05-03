@@ -9,14 +9,20 @@ public class Dataset {
 	private ArrayList<AtributoNumerico> matriz = new ArrayList<AtributoNumerico>();
 	private AtributoCualitativo clases = new AtributoCualitativo();
 	private int posE = 0;
-	private Tipo tipos;
+	private Tipo tipos = new Tipo();
 	
-	// ---------CONSTRUCTOR-------//
-	public Dataset(Scanner inputStream) {
+	// ---------CONSTRUCTORES-------//
+	public Dataset(Scanner inputStream) {	// construir solo los datos de entrenamiento
 		primera(inputStream);
 		construirAtributos(primera.length-1);	// aqui se debe declarar el array de atributos
 		añadirMatriz(inputStream);
 	}
+	
+	public Dataset(Scanner inputStream , Scanner evaluar) {	// construye tanto los datos de entrenamiento como los de evaluar
+		this(inputStream);
+		datosEvaluar(evaluar);
+	}
+	
 	//------ METODOS PARA EL CONSTRUTOR------//
 	private void primera(Scanner inputStream) {	// extrae la primera linea que es donde se encuentran los textos
 		String data = inputStream.nextLine();
@@ -50,6 +56,7 @@ public class Dataset {
 		}
 		
 		clases.add(values[values.length-1]);
+		tipos.add(values[values.length-1]);
 	}
 	
 	// --------- AÑADIR LINEAS A EVALUAR ---------//

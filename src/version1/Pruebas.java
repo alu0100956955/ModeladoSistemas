@@ -25,7 +25,7 @@ public class Pruebas {
 	
 	
 	public static void dataset() {
-		String nombreFichero2 = "evaluar_flor_1.csv";
+		String nombreFichero2 = "evaluar_flor_3.csv";
 		File file2 = new File(nombreFichero2);
 		String nombreFichero = "iris.csv";
 		File file = new File(nombreFichero);
@@ -46,8 +46,10 @@ public class Pruebas {
 			Scanner inputStream2 = new Scanner(file2);
 			AlgoritmoKnn al = new AlgoritmoKnn(inputStream,inputStream2,2);
 			//al.printDataset();
-			al.buscarVecino();
-			al.printVecinos();
+			al.algoritmo();
+			//al.printVecinos();
+			//al.printT();
+			al.printEvaluar();
 			inputStream.close();
 			inputStream2.close();
 		}catch (FileNotFoundException e) {

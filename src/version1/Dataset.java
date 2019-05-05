@@ -129,8 +129,12 @@ public class Dataset {
 	}
 	
 	//------------- SET ---------------//
-	public void set(int i , int j , Double a) {
+	public void set(int i , int j , Double a) {		// CONTROLAR QUE J NO SE SALGA DE LOS NUMEROS 
 		matriz.get(j).set(i, a);
+	}
+	
+	public void setClase(int i , String s ) {
+		clases.set(i, s);
 	}
 	
 	
@@ -158,5 +162,32 @@ public class Dataset {
 		System.out.println(toString());
 	}
 	
+	public String toStringEvaluar() {		// IGUAL QUE EL DE ARRIBA SALVO POR LOS LIMITES DEL BUCLE 
+		String aux = new String();
+		for (int i=getPosE();i< numRows(); i++){
+			aux +=i +"º  "+ construirInstancia(i).toString() + "\n";
+		}
+		return aux;
+	}
+	
+	public void printE() {
+		System.out.println(toStringEvaluar());
+	}
+	
+	
+	// --------OPERACIONES DE TIPO --------//
+	
+	public int pos(String s) {		// devuelve la posicion de la clase en la que se encuentra dicha clase
+		return tipos.pos(s);
+	}
+	public int cantidad() {
+		 return tipos.cantidad();
+	 }
+	public void tiposPrint() {
+		tipos.print();
+	}
+	public String clase(int i) {		// cuidado con llamar a la misma funcion una vez dentro de otra
+		return tipos.clase(i);
+	}
 	
 }

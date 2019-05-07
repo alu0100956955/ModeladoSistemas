@@ -47,6 +47,20 @@ public class AtributoNumerico extends Atributo{
 		if (a > max) max = a;
 	}
 	
+	public Double media() {		// metodo para calcular la media
+		Double aux =0.0;
+		for (Double a:columna) {
+			aux += a;
+		}
+		return (aux/columna.size());
+	}
 	
+	public Double desviacionTipica() {		// metodo de desviacion tipica
+		Double aux =0.0, media = media();
+		for( Double a:columna) {
+			aux += Math.pow((a - media) , 2);
+		}
+		return Math.sqrt(aux);
+	}
 	
 }

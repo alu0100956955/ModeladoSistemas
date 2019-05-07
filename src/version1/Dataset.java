@@ -61,11 +61,41 @@ public class Dataset {
 	
 	// --------- AÑADIR LINEAS A EVALUAR ---------//
 	public void datosEvaluar(Scanner inputStream2) {	// en este metodo añadiremos a la matriz de datos los valores a evaluar
-		
 		posE = numRows();
 		añadirMatriz(inputStream2);	
 	}
 	
+	
+	//---------- PREPROCESADO DE DATOS ------------//
+	public void preprocesadoDatos(Boolean normalizar) {	// este metodo normaliza el dataset || estandariza
+		for (int k =0;k < numRows();k++) {
+			for (int i=0; i < numCols()-1;i++) {
+				if (normalizar) set(k, i, ( (get(k,i)-min(i))/(max(i)-min(i))));
+				else set(k , i ,(get(k,i) - matriz.get(k).media()/matriz.get(k).desviacionTipica() ));
+				
+			}
+		}
+	}
+	
+	
+	
+	//-------- METODOS PARA CALCULAR MIN & MAX ----------//
+	public void limites() {		// Este metodo se encarga de generar el min y el max en cada atributo de la matriz
+		for(AtributoNumerico a:matriz) {
+			a.limites();
+		}
+	}
+		
+		
+	// ---------- CONSTRUIR FILA --------------- //
+	public Instancia construirInstancia(int i) {	// construye una instancia de la posicion indicada
+		Instancia aux = new Instancia();
+		for(AtributoNumerico a:matriz) {
+			aux.add(a.get(i));
+		}
+		aux.setClase(clases.get(i));
+		return aux;	
+	}
 	
 	//-------- GETTERS -----------//
 	public int numRows() {		// Este metodo devuelce el numero de filas
@@ -87,27 +117,6 @@ public class Dataset {
 		return matriz.get(j).get(i);
 	}
 	
-	//-------- METODOS PARA CALCULAR MIN & MAX ----------//
-	public void limites() {		// Este metodo se encarga de generar el min y el max en cada atributo de la matriz
-		for(AtributoNumerico a:matriz) {
-			a.limites();
-		}
-	}
-	
-	public ArrayList<Double> Min(){		// metodos muy IGUALES , hacer el metodo en un solo metodo y con un enumerable saber si hacer una o otra , aunque ocn bool es mas facil
-		ArrayList<Double> aux = new ArrayList<Double>();
-		for (int i=0; i< primera.length-1;i++) {
-			aux.add(matriz.get(i).getMin());
-		}
-		return aux;
-	}
-	public ArrayList<Double> Max(){
-		ArrayList<Double> aux = new ArrayList<Double>();
-		for (int i=0; i< primera.length-1;i++) {
-			aux.add(matriz.get(i).getMax());
-		}
-		return aux;
-	}
 	
 	//--------- GET MIN & MAX --------------//
 	public Double max(int i) {
@@ -116,25 +125,36 @@ public class Dataset {
 	public Double min(int i) {
 		return matriz.get(i).getMin();
 	}
-	
-	// ---------- CONSTRUIR FILA --------------- //
-	public Instancia construirInstancia(int i) {	// construye una instancia de la posicion indicada
-		Instancia aux = new Instancia();
-		for(AtributoNumerico a:matriz) {
-			aux.add(a.get(i));
+	public ArrayList<Double> Min(){		// metodos muy IGUALES , hacer el metodo en un solo metodo y con un enumerable saber si hacer una o otra , aunque ocn bool es mas facil
+		ArrayList<Double> aux = new ArrayList<Double>();
+		for (int i=0; i< primera.length-1;i++) {
+			aux.add(matriz.get(i).getMin());
 		}
-		aux.setClase(clases.get(i));
 		return aux;
-		
+	}
+	public ArrayList<Double> Max(){		// devuelve el vector con todos los valores maximos de cada columna
+		ArrayList<Double> aux = new ArrayList<Double>();
+		for (int i=0; i< primera.length-1;i++) {
+			aux.add(matriz.get(i).getMax());
+		}
+		return aux;
 	}
 	
+	public Double media(int i) {
+		return matriz.get(i).media();
+	}
+	public Double desviacionTipica(int i) {
+		return matriz.get(i).desviacionTipica();
+	}
+	
+	
 	//------------- SET ---------------//
-	public void set(int i , int j , Double a) {		// CONTROLAR QUE J NO SE SALGA DE LOS NUMEROS 
-		matriz.get(j).set(i, a);
+	public void set(int i , int j , Double a) {		// metodo para introducir un nuevo elemento en la matriz de datos
+		matriz.get(j).set(i, a);	// CONTROLAR QUE J NO SE SALGA DE LOS NUMEROS 
 	}
 	
 	public void setClase(int i , String s ) {
-		clases.set(i, s);
+		clases.set(i, s);		// metodo para introducir una nueva clase en el vector de clases
 	}
 	
 	
@@ -149,29 +169,21 @@ public class Dataset {
 		
 	}
 	
-	public String toString() {		// pasa a String la matriz de datos
+	public String toString( int x , int y) {		// pasa a String la matriz de datos , hay que pasar los limites del dataset que se quiere imprimir
 		String aux = new String();
 		System.out.println(numRows());
-		for (int i=0;i< numRows()-1; i++){
+		for (int i=x;i< y; i++){
 			aux +=i +"º  "+ construirInstancia(i).toString() + "\n";
 		}
 		return aux;
 	}
 	
 	public void print() {
-		System.out.println(toString());
-	}
-	
-	public String toStringEvaluar() {		// IGUAL QUE EL DE ARRIBA SALVO POR LOS LIMITES DEL BUCLE 
-		String aux = new String();
-		for (int i=getPosE();i< numRows(); i++){
-			aux +=i +"º  "+ construirInstancia(i).toString() + "\n";
-		}
-		return aux;
+		System.out.println(toString(0,numRows()-1));
 	}
 	
 	public void printE() {
-		System.out.println(toStringEvaluar());
+		System.out.println(toString(getPosE(),numRows()));
 	}
 	
 	

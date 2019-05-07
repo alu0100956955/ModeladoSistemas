@@ -20,7 +20,7 @@ public class Pruebas {
 		String[] s2 = new String[]{"4.9","3","1.4","0.2"};		
 		Instancia i1 = new Instancia(s1);
 		Instancia i2 = new Instancia(s2);
-		System.out.println(AlgoritmoKnn.distancia(i1, i2));
+		//System.out.println(AlgoritmoKnn.distancia(i1, i2));
 	}
 	
 	
@@ -44,12 +44,12 @@ public class Pruebas {
 			*/
 			System.out.println("ahora el algoritmo");
 			Scanner inputStream2 = new Scanner(file2);
-			AlgoritmoKnn al = new AlgoritmoKnn(inputStream,inputStream2,2);
+			AlgoritmoKnn al = new AlgoritmoKnn(inputStream,inputStream2,2,0);
 			//al.printDataset();
-			al.algoritmo();
+			//al.algoritmo(0);
 			//al.printVecinos();
 			//al.printT();
-			al.printEvaluar();
+			//al.printEvaluar();
 			inputStream.close();
 			inputStream2.close();
 		}catch (FileNotFoundException e) {

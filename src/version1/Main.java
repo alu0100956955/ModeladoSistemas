@@ -37,6 +37,13 @@ public class Main {
 			System.out.print("Que distancia desea emplear ? 0.Eculidea , 1.Manhattan ó 2.Chebychef : ");
 			distancia = sc2.nextInt();
 			Interfaz in = new Interfaz(inputStream,inputStream2,k,distancia);
+			System.out.print("Desea que se preprocesen los datos ? S o N : ");
+			s1 = sc.nextLine();
+			if (s1 == "S") {
+				System.out.print("Que preprocesado desea llevar a cabo? 0.rango 0-1 , 1.Estandarizacion : ");
+				if (sc2.nextInt() == 0) in.preprocesadoDatos(true);
+				else in.preprocesadoDatos(false);
+			}
 			System.out.print("Que metodo de votacion desea emplear ? 0.MayoriaSimple , 1.MayoriaAbsoluta ó 2.Personalizada : ");
 			votacion = sc2.nextInt();
 			if (votacion !=0) {
@@ -50,6 +57,8 @@ public class Main {
 		}
 		
 	}
+	
+	
 
 }
 

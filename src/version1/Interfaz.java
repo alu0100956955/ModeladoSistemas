@@ -69,4 +69,8 @@ public class Interfaz {
 		return d.desviacionTipica(i);
 	}
 	
+	public void preprocesadoDatos(Boolean b) {
+		d.preprocesadoDatos(b);
+	}
+	
 }
